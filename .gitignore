@@ -1,0 +1,7 @@
+*
+!.gitignore
+!helper.sh
+!index.js
+!package.json
+!package-lock.js
+!repos.txt
