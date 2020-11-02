@@ -1,9 +1,7 @@
 const { exec } = require("child_process");
+const fs = require('fs')
 
-const repos = [
-  "https://github.com/Laboratoria/SAP005-cipher",
-  "https://github.com/JulianaAmoasei/SAP005-cipher"
-]
+const repos = fs.readFileSync('./repos.txt').toString().split('\n')
 
 for (repo of repos) {
   const splitLink = repo.split('/')
@@ -11,16 +9,17 @@ for (repo of repos) {
   const linkRepo = repo.includes('.git') ? repo : `${repo}.git`
 
   const cloneInstall = `git clone ${linkRepo} ${name} && cd ${name} && npm install`
-  const runTest = `cd ${name} && npm run test -- --json --outputFile=output.json`
+  const runTest = `cd ${name} && npm run test --no-color > ../logs/${name}.log 2>&1`
 
   exec(cloneInstall, (error, stdout, stderr) => {
     if (error) console.log(`error: ${error.message}`);
     if (stderr) console.log(`stderr: ${stderr}`);
+    console.log(`stdout: ${stdout}`);
 
     exec(runTest, (error, stdout, stderr) => {
       if (error) console.log(`error: ${error.message}`);
       if (stderr) console.log(`stderr: ${stderr}`);
-      
+      console.log(`stdout: ${stdout}`);
     })
   })
 }
