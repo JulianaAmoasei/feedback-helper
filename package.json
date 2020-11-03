@@ -1,12 +1,12 @@
 {
   "name": "feedback-helper",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.2",
+  "description": "script para facilitar o feedback técnico de projetos",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Juliana Amoasei & Ricardo Fukui",
   "license": "ISC"
 }
